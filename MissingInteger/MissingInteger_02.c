@@ -6,15 +6,19 @@ int cmp_fun (const void * a, const void * b)
         return ( *(int*)a - *(int*)b );
 }
 
+/* 1. At the first, set ret as 1 for the numbers of array are all negative.
+ * 2. Skip the negative numbers, move the index i to the positive number.
+ * 3. If i < N, and ret == A[i] means the array includes number 1.
+ * 4. Start to find the smallest number.
+ * 5. If A[i] == A[i+1], means the same numbers, move to the next index.
+ */
 int solution(int A[], int N)
 {
 	int i = 0;
-	/* Set ret as 1, if the numbers of array are all negative. */
 	int ret = 1;
 
 	qsort(A, N, sizeof(int), cmp_fun);
 
-	/* Start from the index of positive number. */
 	while (i < N && A[i] < 1 )
 		i++;
 
